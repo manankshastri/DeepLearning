@@ -3,7 +3,7 @@ from collections import defaultdict
 
 class Agent:
 
-    def __init__(self, nA=6, alpha = 0.4,  gamma = 0.9, epsilon = 0.01):
+    def __init__(self, nA=6, alpha = 0.88,  gamma = 0.99, epsilon = 0.01):
         """ Initialize agent.
         Params
         ======
@@ -25,7 +25,7 @@ class Agent:
         =======
         - action: an integer, compatible with the task's action space
         """
-        self.epsilon =  1.0 / ((i_episode + 10))
+        self.epsilon =  1.0 / ((i_episode + 5))
         policy_s = np.ones(self.nA) * self.epsilon / self.nA
         policy_s[np.argmax(self.Q[state])]= 1 - self.epsilon + (self.epsilon / self.nA)
         
@@ -44,7 +44,7 @@ class Agent:
         """        
                
         
-        self.epsilon =  1.0 / ((i_episode + 10))
+        self.epsilon =  1.0 / ((i_episode + 5))
         policy= np.ones(self.nA) * self.epsilon / self.nA
         policy[np.argmax(self.Q[state])]= 1 - self.epsilon + (self.epsilon / self.nA)
              
